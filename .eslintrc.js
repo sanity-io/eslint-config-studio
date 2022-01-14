@@ -1,7 +1,10 @@
-// https://github.com/microsoft/rushstack/tree/ebee58403b1595027da7ef00a4d817d83ecbd737/eslint/eslint-patch#what-it-does
-// next.js:         https://github.com/vercel/next.js/blob/0de84472eb565d5ecae1e6b71994f0cd46c8ecb9/packages/eslint-config-next/index.js#L7
+// `@rushstack/eslint-patch` patches eslint so that shared configs can include
+// plugins as dependencies. Without this patch, plugins have to be included as
+// peer dependencies in studios.
+//
 // create-react-app https://github.com/facebook/create-react-app/blob/9673858a3715287c40aef9e800c431c7d45c05a2/packages/eslint-config-react-app/base.js#L11
-// …both use this
+// and next.js:     https://github.com/vercel/next.js/blob/0de84472eb565d5ecae1e6b71994f0cd46c8ecb9/packages/eslint-config-next/index.js#L7
+// both use this
 require('@rushstack/eslint-patch/modern-module-resolution');
 
 // The ESLint browser environment defines all browser globals as valid,
@@ -26,6 +29,9 @@ module.exports = {
     jest: true,
   },
 
+  // `@babel/eslint-parser` is used instead of `@typescript-eslint/parser`
+  // because `@typescript-eslint/parser` requires typescript as a peer
+  // dependency and we don't want to enforce typescript as a dependency
   parser: '@babel/eslint-parser',
   parserOptions: {
     requireConfigFile: false,
@@ -40,10 +46,10 @@ module.exports = {
   // removes warning "React version not specified in eslint-plugin-react settings"
   settings: { react: { version: 'detect' } },
 
+  // inspired by:
+  // - https://github.com/eslint/eslint/blob/dd58cd4afa6ced9016c091fc99a702c97a3e44f0/conf/eslint-recommended.js#L14-L74
+  // - https://github.com/suchipi/eslint-config-unobtrusive/blob/744a7f23a549c3dcf0a35a0d43372a268af4f028/index.js
   rules: {
-    // inspired by:
-    // - https://github.com/eslint/eslint/blob/dd58cd4afa6ced9016c091fc99a702c97a3e44f0/conf/eslint-recommended.js#L14-L74
-    // - https://github.com/suchipi/eslint-config-unobtrusive/blob/744a7f23a549c3dcf0a35a0d43372a268af4f028/index.js
     'constructor-super': 'error',
     'for-direction': 'error',
     'getter-return': 'error',

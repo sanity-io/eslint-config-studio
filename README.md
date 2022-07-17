@@ -9,13 +9,13 @@ Designed to be relatively unobtrusive to help find bugs instead enforce opinions
 ### Install
 
 ```
-yarn add eslint @sanity/eslint-config-studio
+yarn add eslint @sanity/eslint-config-studio --dev
 ```
 
 or
 
 ```
-npm install eslint @sanity/eslint-config-studio
+npm install eslint @sanity/eslint-config-studio --save-dev
 ```
 
 ### Update the configuration

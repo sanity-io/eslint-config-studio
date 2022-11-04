@@ -41,8 +41,6 @@ jobs:
         # Linting can be skipped
       - run: npm run lint
         if: github.event.inputs.test != 'false'
-        # But not the build script, as semantic-release will crash if this command fails so it makes sense to test it early
-      - run: npm run prepublishOnly
 
   test:
     needs: build

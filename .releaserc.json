@@ -1,3 +1,4 @@
 {
+  "extends": "@sanity/semantic-release-preset",
   "branches": ["main", { "name": "alpha", "prerelease": true }]
 }

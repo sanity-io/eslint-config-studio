@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/sanity-io/eslint-config-studio/compare/v2.0.2...v2.0.3) (2023-07-07)
+
+### Bug Fixes
+
+- don't publish junk files ([f9ae386](https://github.com/sanity-io/eslint-config-studio/commit/f9ae386729ca36b865a703c7c8acc008057638be))
+
 ## [2.0.2](https://github.com/sanity-io/eslint-config-studio/compare/v2.0.1...v2.0.2) (2023-07-07)
 
 ### Bug Fixes

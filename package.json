@@ -21,6 +21,9 @@
     "lint": "eslint . --max-warnings=0",
     "test": "vitest"
   },
+  "files": [
+    "index.js"
+  ],
   "dependencies": {
     "@babel/core": "^7.22.8",
     "@babel/eslint-parser": "^7.22.7",

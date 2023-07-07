@@ -41,10 +41,10 @@ it("is a valid config and doesn't include any deprecated rules", async () => {
     const fakeFile = {
       filePath,
       messages: ruleIds.map((ruleId) => ({ ruleId })),
+      suppressedMessages: [],
     };
 
     const rulesMeta = eslint.getRulesMetaForResults([fakeFile]);
-
     for (const ruleId of ruleIds) {
       allRuleIds.add(ruleId);
     }

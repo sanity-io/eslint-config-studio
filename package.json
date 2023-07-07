@@ -22,7 +22,7 @@
     "test": "vitest"
   },
   "files": [
-    "index.js"
+    ".eslintrc.js"
   ],
   "dependencies": {
     "@babel/core": "^7.22.8",

@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/sanity-io/eslint-config-studio/compare/v2.0.3...v2.0.4) (2023-07-07)
+
+### Bug Fixes
+
+- add missing file ([f743e5d](https://github.com/sanity-io/eslint-config-studio/commit/f743e5df708e64ed223edd04490943b7870396e1))
+
 ## [2.0.3](https://github.com/sanity-io/eslint-config-studio/compare/v2.0.2...v2.0.3) (2023-07-07)
 
 ### Bug Fixes

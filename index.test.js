@@ -1,8 +1,9 @@
-import { ESLint } from 'eslint';
-import path from 'path';
-import fs from 'fs';
+import { ESLint } from "eslint";
+import path from "path";
+import fs from "fs";
+import { it, expect } from "vitest";
 
-const supportedExtensions = ['.js', '.ts', '.tsx'];
+const supportedExtensions = [".js", ".ts", ".tsx"];
 
 // grabs the rule meta for each of the rules in the config and asserts that they
 // are not marked as deprecated. works by using the eslint node API
@@ -18,7 +19,7 @@ it("is a valid config and doesn't include any deprecated rules", async () => {
     // through the supported extensions and ensure the file exists
     const filePath = path.resolve(__dirname, `_fake-file${extension}`);
 
-    await fs.promises.writeFile(filePath, '// intentionally blank');
+    await fs.promises.writeFile(filePath, "// intentionally blank");
 
     const eslint = new ESLint();
 

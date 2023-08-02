@@ -5,6 +5,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/sanity-io/eslint-config-studio/compare/v2.0.4...v3.0.0) (2023-08-02)
+
+### ⚠ BREAKING CHANGES
+
+- **deps:** update linters to v6 (major)
+
+### Bug Fixes
+
+- **deps:** update linters to v6 (major) ([66835f1](https://github.com/sanity-io/eslint-config-studio/commit/66835f1ed97e0056b389be380d6848dd4122cbee))
+
 ## [2.0.4](https://github.com/sanity-io/eslint-config-studio/compare/v2.0.3...v2.0.4) (2023-07-07)
 
 ### Bug Fixes

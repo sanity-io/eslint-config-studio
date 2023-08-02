@@ -27,6 +27,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+permissions:
+  contents: read # for checkout
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -79,6 +82,11 @@ jobs:
       - run: npm test
 
   release:
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     needs: test
     # only run if opt-in during workflow_dispatch, and run if tests are skipped using the toggle, but not if they have failed
     if: always() && github.event.inputs.release == 'true' && needs.test.result != 'failure' && needs.test.result != 'cancelled'

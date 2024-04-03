@@ -5,6 +5,21 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/sanity-io/eslint-config-studio/compare/v3.0.1...v4.0.0) (2024-04-03)
+
+### ⚠ BREAKING CHANGES
+
+- upgrade to `@typescript-eslint/eslint-plugin` v7.5.0
+
+### Features
+
+- upgrade to `@typescript-eslint/eslint-plugin` v7.5.0 ([4c38dba](https://github.com/sanity-io/eslint-config-studio/commit/4c38dbaa5dd93126308256e5f0a08ab63938dce1))
+
+### Bug Fixes
+
+- **deps:** Update linters to v7 ([#38](https://github.com/sanity-io/eslint-config-studio/issues/38)) ([596504f](https://github.com/sanity-io/eslint-config-studio/commit/596504f2940f2fc944879786c1ae8443901b12b7))
+- **deps:** Update non-major ([#33](https://github.com/sanity-io/eslint-config-studio/issues/33)) ([072cd85](https://github.com/sanity-io/eslint-config-studio/commit/072cd859b85ff17bdf988aeced07bd61b97053aa))
+
 ## [3.0.1](https://github.com/sanity-io/eslint-config-studio/compare/v3.0.0...v3.0.1) (2023-08-29)
 
 ### Bug Fixes

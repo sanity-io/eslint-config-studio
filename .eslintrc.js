@@ -72,26 +72,12 @@ module.exports = {
     "no-empty-function": "warn", // Note: has a TS extension
     "no-empty-pattern": "warn",
     "no-ex-assign": "warn",
-    "no-extra-semi": "warn", // Note: has a TS extension
     "no-func-assign": "warn",
     "no-global-assign": "error",
     "no-import-assign": "error",
     "no-invalid-regexp": "error",
     "no-loss-of-precision": "warn", // Note: has a TS extension
     "no-misleading-character-class": "warn",
-    // https://github.com/facebook/create-react-app/blob/a422bf227cf5294a34d68696664e9568a152fd8f/packages/eslint-config-react-app/index.js#L130-L141
-    "no-mixed-operators": [
-      "warn",
-      {
-        groups: [
-          ["&", "|", "^", "~", "<<", ">>", ">>>"],
-          ["==", "!=", "===", "!==", ">", ">=", "<", "<="],
-          ["&&", "||"],
-          ["in", "instanceof"],
-        ],
-        allowSamePrecedence: false,
-      },
-    ],
     "no-new-symbol": "error",
     "no-nonoctal-decimal-escape": "warn",
     "no-obj-calls": "error",
@@ -201,9 +187,6 @@ module.exports = {
 
         "no-empty-function": "off",
         "@typescript-eslint/no-empty-function": "warn",
-
-        "no-extra-semi": "off",
-        "@typescript-eslint/no-extra-semi": "warn",
 
         "no-loss-of-precision": "off",
         "@typescript-eslint/no-loss-of-precision": "warn",

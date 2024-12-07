@@ -3,5 +3,6 @@
   "printWidth": 100,
   "bracketSpacing": false,
   "singleQuote": true,
-  "trailingComma": "es5"
+  "trailingComma": "es5",
+  "plugins": ["prettier-plugin-packagejson"]
 }

@@ -1,6 +1,6 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import {ESLint} from 'eslint'
-import path from 'path'
-import fs from 'fs'
 import {it, expect} from 'vitest'
 
 const supportedExtensions = ['.js', '.ts', '.tsx']
@@ -17,7 +17,7 @@ it("is a valid config and doesn't include any deprecated rules", async () => {
     // in order to pull the "rules meta" which contains the deprecated flag,
     // we have to initialize the linter for different file types so we iterate
     // through the supported extensions and ensure the file exists
-    const filePath = path.resolve(__dirname, `_fake-file${extension}`)
+    const filePath = path.resolve(import.meta.dirname, `_fake-file${extension}`)
 
     await fs.promises.writeFile(filePath, '// intentionally blank')
 

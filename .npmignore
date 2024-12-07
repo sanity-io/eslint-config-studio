@@ -1,7 +1,0 @@
-.github
-node_modules
-.babelrc.js
-.gitignore
-.releaserc.json
-index.test.js
-renovate.json

@@ -5,6 +5,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/sanity-io/eslint-config-studio/compare/v4.0.0...v5.0.0) (2024-12-09)
+
+### ⚠ BREAKING CHANGES
+
+- Drop support for eslint <= 8. See MIGRATION.md for details on how to migrate.
+
+### Features
+
+- upgrade to eslint@9 ([#41](https://github.com/sanity-io/eslint-config-studio/issues/41)) ([ca770cb](https://github.com/sanity-io/eslint-config-studio/commit/ca770cbd5aaf62f90716f9c135aec01dc886c7fd))
+
 ## [4.0.0](https://github.com/sanity-io/eslint-config-studio/compare/v3.0.1...v4.0.0) (2024-04-03)
 
 ### ⚠ BREAKING CHANGES

@@ -1,1 +1,3 @@
-module.exports = require("./.eslintrc.js");
+import eslintConfig from './eslint.config.js'
+
+export default eslintConfig

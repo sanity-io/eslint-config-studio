@@ -16,36 +16,44 @@
   },
   "license": "MIT",
   "author": "Sanity.io <hello@sanity.io>",
+  "type": "module",
   "main": "index.js",
+  "files": [
+    "confusingBrowserGlobals.js",
+    "eslint.config.js",
+    "index.js"
+  ],
   "scripts": {
     "lint": "eslint . --max-warnings=0",
-    "test": "vitest"
+    "prepare": "node -e \"require('fs').writeFileSync('./confusingBrowserGlobals.js', 'export default ' + JSON.stringify(require('confusing-browser-globals'), null, 2))\" && prettier -w ./confusingBrowserGlobals.js",
+    "test": "vitest",
+    "posttest": "npm run lint"
   },
-  "files": [
-    ".eslintrc.js"
-  ],
   "dependencies": {
-    "@babel/core": "^7.24.3",
-    "@babel/eslint-parser": "^7.24.1",
-    "@babel/preset-env": "^7.24.3",
-    "@babel/preset-react": "^7.24.1",
-    "@rushstack/eslint-patch": "^1.10.1",
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
-    "@typescript-eslint/parser": "^7.5.0",
-    "confusing-browser-globals": "^1.0.11",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "typescript-eslint": "^8.17.0"
   },
   "devDependencies": {
-    "@sanity/semantic-release-preset": "^4.1.7",
-    "eslint": "8.57.0",
-    "prettier": "^3.2.5",
-    "prettier-plugin-packagejson": "^2.4.14",
-    "react": "18.2.0",
-    "typescript": "5.4.2",
-    "vitest": "^1.4.0",
-    "vitest-github-actions-reporter": "^0.11.1"
+    "@sanity/semantic-release-preset": "^5.0.0",
+    "@types/react": "^19.0.1",
+    "confusing-browser-globals": "^1.0.11",
+    "eslint": "^9.16.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-packagejson": "^2.5.6",
+    "react": "^19.0.0",
+    "vitest": "^2.1.8"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=18.18"
   },
   "publishConfig": {
     "access": "public",

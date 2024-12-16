@@ -16,6 +16,11 @@ if (!jsxRuntime) {
 }
 
 export default [
+  // Global ignore patterns
+  {
+    ignores: ['.sanity/', 'dist/'],
+  },
+
   // Global settings
   {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],

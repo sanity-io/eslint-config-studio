@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/sanity-io/eslint-config-studio/compare/v5.0.0...v5.0.1) (2024-12-16)
+
+### Bug Fixes
+
+- ignore Sanity runtime artifact and built files ([#43](https://github.com/sanity-io/eslint-config-studio/issues/43)) ([8c44e39](https://github.com/sanity-io/eslint-config-studio/commit/8c44e39f2729afd9e9cbf781a656c5000d525506))
+
 ## [5.0.0](https://github.com/sanity-io/eslint-config-studio/compare/v4.0.0...v5.0.0) (2024-12-09)
 
 ### ⚠ BREAKING CHANGES

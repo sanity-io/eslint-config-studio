@@ -1,6 +1,6 @@
 {
   "name": "@sanity/eslint-config-studio",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "The ESLint configuration that ships with new Sanity Studio projects. Designed to be relatively unobtrusive to help find bugs instead enforce opinions.",
   "keywords": [
     "sanity",

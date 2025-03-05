@@ -30,6 +30,14 @@ export default [
         version: 'detect',
       },
     },
+
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
   },
 
   // Ground rules
@@ -134,7 +142,7 @@ export default [
       'react/no-unescaped-entities': 'error',
       'react/no-unknown-property': 'warn',
       'react/prop-types': 'warn',
-      'react/react-in-jsx-scope': 'error',
+      'react/react-in-jsx-scope': 'off',
       'react/require-render-return': 'error',
       'react/style-prop-object': 'warn',
     },

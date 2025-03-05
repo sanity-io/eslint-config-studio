@@ -37,13 +37,13 @@
   },
   "devDependencies": {
     "@sanity/semantic-release-preset": "^5.0.0",
-    "@types/react": "^19.0.8",
+    "@types/react": "^19.0.10",
     "confusing-browser-globals": "^1.0.11",
-    "eslint": "^9.19.0",
-    "prettier": "^3.4.2",
-    "prettier-plugin-packagejson": "^2.5.8",
+    "eslint": "^9.21.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-packagejson": "^2.5.10",
     "react": "^19.0.0",
-    "vitest": "^3.0.5"
+    "vitest": "^3.0.7"
   },
   "peerDependencies": {
     "eslint": "^9.0.0"

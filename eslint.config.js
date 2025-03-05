@@ -209,6 +209,7 @@ export default [
       'no-unsafe-optional-chaining': 'off',
       'no-undef': 'off',
       'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
 
       'no-unused-vars': 'off',
       // https://github.com/facebook/create-react-app/blob/a422bf227cf5294a34d68696664e9568a152fd8f/packages/eslint-config-react-app/index.js#L82-L88

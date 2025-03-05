@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/sanity-io/eslint-config-studio/compare/v5.0.1...v5.0.2) (2025-03-05)
+
+### Bug Fixes
+
+- remove reliance on babel, tweak react rules ([#50](https://github.com/sanity-io/eslint-config-studio/issues/50)) ([b903645](https://github.com/sanity-io/eslint-config-studio/commit/b903645dab4d8ada90deea6cd451d27484a2a6a9)), closes [#49](https://github.com/sanity-io/eslint-config-studio/issues/49)
+
 ## [5.0.1](https://github.com/sanity-io/eslint-config-studio/compare/v5.0.0...v5.0.1) (2024-12-16)
 
 ### Bug Fixes

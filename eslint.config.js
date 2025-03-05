@@ -1,6 +1,5 @@
 // @ts-check
 
-import babelParser from '@babel/eslint-parser'
 import jsxa11y from 'eslint-plugin-jsx-a11y'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -33,14 +32,9 @@ export default [
     },
 
     languageOptions: {
-      parser: babelParser,
       parserOptions: {
-        requireConfigFile: false,
-        babelOptions: {
-          presets: [
-            ['@babel/preset-env', {targets: 'maintained node versions'}],
-            '@babel/preset-react',
-          ],
+        ecmaFeatures: {
+          jsx: true,
         },
       },
     },
@@ -148,7 +142,7 @@ export default [
       'react/no-unescaped-entities': 'error',
       'react/no-unknown-property': 'warn',
       'react/prop-types': 'warn',
-      'react/react-in-jsx-scope': 'error',
+      'react/react-in-jsx-scope': 'off',
       'react/require-render-return': 'error',
       'react/style-prop-object': 'warn',
     },
@@ -215,6 +209,7 @@ export default [
       'no-unsafe-optional-chaining': 'off',
       'no-undef': 'off',
       'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
 
       'no-unused-vars': 'off',
       // https://github.com/facebook/create-react-app/blob/a422bf227cf5294a34d68696664e9568a152fd8f/packages/eslint-config-react-app/index.js#L82-L88

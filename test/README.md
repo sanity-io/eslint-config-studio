@@ -1,1 +1,5 @@
-This folder exists only to ensure that TypeScript in `.ts` files and React/JSX in `.tsx` works as intended.
+This folder exists only to ensure that:
+
+- TypeScript in `.ts` files works
+- React/JSX in `.tsx` files works
+- React/JSX in `.jsx` files works

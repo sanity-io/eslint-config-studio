@@ -1,6 +1,5 @@
 // @ts-check
 
-import babelParser from '@babel/eslint-parser'
 import jsxa11y from 'eslint-plugin-jsx-a11y'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
@@ -29,19 +28,6 @@ export default [
       react: {
         // removes warning "React version not specified in eslint-plugin-react settings"
         version: 'detect',
-      },
-    },
-
-    languageOptions: {
-      parser: babelParser,
-      parserOptions: {
-        requireConfigFile: false,
-        babelOptions: {
-          presets: [
-            ['@babel/preset-env', {targets: 'maintained node versions'}],
-            '@babel/preset-react',
-          ],
-        },
       },
     },
   },

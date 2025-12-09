@@ -42,7 +42,7 @@
     "eslint": "^9.21.0",
     "prettier": "^3.5.3",
     "prettier-plugin-packagejson": "^2.5.10",
-    "react": "^19.0.0",
+    "react": "19.2.1",
     "vitest": "^3.0.7"
   },
   "peerDependencies": {

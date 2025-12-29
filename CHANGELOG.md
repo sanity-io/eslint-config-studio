@@ -5,6 +5,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/sanity-io/eslint-config-studio/compare/v5.0.2...v6.0.0) (2025-12-29)
+
+### ⚠ BREAKING CHANGES
+
+- update eslint plugins to latest versions (#53)
+
+### Features
+
+- update eslint plugins to latest versions ([#53](https://github.com/sanity-io/eslint-config-studio/issues/53)) ([1327801](https://github.com/sanity-io/eslint-config-studio/commit/1327801f401b658f1368191b487242338ed3e134))
+
 ## [5.0.2](https://github.com/sanity-io/eslint-config-studio/compare/v5.0.1...v5.0.2) (2025-03-05)
 
 ### Bug Fixes

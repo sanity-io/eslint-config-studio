@@ -1,18 +1,16 @@
 // @ts-check
 
-import jsxa11y from 'eslint-plugin-jsx-a11y'
-import react from 'eslint-plugin-react'
+import react from '@eslint-react/eslint-plugin'
+// `eslint-plugin-jsx-a11y-x` is a maintained fork of `eslint-plugin-jsx-a11y`,
+// which has not supported ESLint since v9. Rule names are unchanged, so it is
+// registered below under the original `jsx-a11y` namespace to keep existing
+// `eslint-disable` comments working.
+import jsxa11y from 'eslint-plugin-jsx-a11y-x'
 import reactHooks from 'eslint-plugin-react-hooks'
 import typescript from 'typescript-eslint'
 
 // Importing from local file instead of npm package because of ESM vs CommonJS
 import confusingBrowserGlobals from './confusingBrowserGlobals.js'
-
-const jsxRuntime = react.configs.flat?.['jsx-runtime']
-
-if (!jsxRuntime) {
-  throw new Error('Missing react/jsx-runtime config')
-}
 
 export default [
   // Global ignore patterns
@@ -25,8 +23,8 @@ export default [
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
 
     settings: {
-      react: {
-        // removes warning "React version not specified in eslint-plugin-react settings"
+      'react-x': {
+        // some rules behave differently depending on the React version in use
         version: 'detect',
       },
     },
@@ -86,6 +84,8 @@ export default [
       'no-shadow-restricted-names': 'error',
       'no-sparse-arrays': 'warn',
       'no-this-before-super': 'error',
+      // added to eslint:recommended in ESLint v10
+      'no-unassigned-vars': 'warn',
       'no-undef': 'error',
       'no-unexpected-multiline': 'warn',
       'no-unreachable': 'warn',
@@ -111,9 +111,13 @@ export default [
       // https://github.com/facebook/create-react-app/blob/a422bf227cf5294a34d68696664e9568a152fd8f/packages/eslint-config-react-app/index.js#L183-L190
       // Note: has TS extension
       'no-use-before-define': ['warn', {functions: false, classes: false, variables: false}],
+      // added to eslint:recommended in ESLint v10
+      'no-useless-assignment': 'warn',
       'no-useless-backreference': 'warn',
       'no-useless-escape': 'warn',
       'no-with': 'error',
+      // added to eslint:recommended in ESLint v10
+      'preserve-caught-error': 'warn',
       'require-yield': 'warn',
       'use-isnan': 'warn',
       // https://github.com/suchipi/eslint-config-unobtrusive/blob/744a7f23a549c3dcf0a35a0d43372a268af4f028/index.js#L217-L225
@@ -123,28 +127,19 @@ export default [
 
   // Basic React support
   {
-    plugins: {react: react},
+    plugins: {'@eslint-react': react},
     rules: {
-      // mostly inspired by plugin:react/recommended but less strict
-      // https://github.com/yannickcr/eslint-plugin-react/blob/151bb2b13892969bea17b334e882eb422152c30a/index.js#L124-L157
-      'react/jsx-key': 'warn',
-      'react/jsx-no-comment-textnodes': 'warn',
-      'react/jsx-no-duplicate-props': 'error',
-      'react/jsx-no-target-blank': 'warn',
-      'react/jsx-uses-react': 'error',
-      'react/jsx-uses-vars': 'warn',
-      'react/no-danger-with-children': 'warn',
-      'react/no-direct-mutation-state': 'error',
-      'react/no-is-mounted': 'warn',
-      'react/no-render-return-value': 'error',
-      'react/no-string-refs': 'error',
-      'react/no-typos': 'warn',
-      'react/no-unescaped-entities': 'error',
-      'react/no-unknown-property': 'warn',
-      'react/prop-types': 'warn',
-      'react/react-in-jsx-scope': 'off',
-      'react/require-render-return': 'error',
-      'react/style-prop-object': 'warn',
+      // a subset of @eslint-react's `recommended` preset, kept to the rules that
+      // catch bugs rather than enforce a way of writing React
+      // https://eslint-react.xyz/docs/rules
+      '@eslint-react/dom-no-dangerously-set-innerhtml-with-children': 'warn',
+      '@eslint-react/dom-no-render-return-value': 'error',
+      '@eslint-react/dom-no-string-style-prop': 'warn',
+      '@eslint-react/dom-no-unknown-property': 'warn',
+      '@eslint-react/dom-no-unsafe-target-blank': 'warn',
+      '@eslint-react/jsx-no-comment-textnodes': 'warn',
+      '@eslint-react/no-direct-mutation-state': 'error',
+      '@eslint-react/no-missing-key': 'warn',
     },
   },
 
@@ -208,8 +203,6 @@ export default [
       // TypeScript should do a good job at this
       'no-unsafe-optional-chaining': 'off',
       'no-undef': 'off',
-      'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
 
       'no-unused-vars': 'off',
       // https://github.com/facebook/create-react-app/blob/a422bf227cf5294a34d68696664e9568a152fd8f/packages/eslint-config-react-app/index.js#L82-L88

@@ -30,9 +30,26 @@ export default [...studio]
 
 ### Version compatibility
 
-This package is designed to work with ESLint >= 9, which supports/uses the new ["flat configuration"](https://eslint.org/blog/2022/08/new-config-system-part-2/) format.
+This package is designed to work with ESLint >= 10, and requires Node.js >= 22.13.
 
-If you are using ESLint <= 8, you should install and use [`@sanity/eslint-config-studio@4`](https://github.com/sanity-io/eslint-config-studio/tree/v4.0.0).
+| ESLint  | `@sanity/eslint-config-studio`                                       |
+| ------- | -------------------------------------------------------------------- |
+| `>= 10` | `7`                                                                  |
+| `9`     | [`6`](https://github.com/sanity-io/eslint-config-studio/tree/v6.0.0) |
+| `<= 8`  | [`4`](https://github.com/sanity-io/eslint-config-studio/tree/v4.0.0) |
+
+See [`MIGRATION.md`](./MIGRATION.md) when upgrading between majors. Upgrading to `7` renames every React rule, so read it before you upgrade.
+
+## Plugins
+
+| Plugin                                                                                 | Namespace       | Covers            |
+| -------------------------------------------------------------------------------------- | --------------- | ----------------- |
+| [`@eslint-react/eslint-plugin`](https://eslint-react.xyz)                              | `@eslint-react` | React and JSX     |
+| [`eslint-plugin-jsx-a11y-x`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x)   | `jsx-a11y`      | JSX accessibility |
+| [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) | `react-hooks`   | Rules of Hooks    |
+| [`typescript-eslint`](https://typescript-eslint.io)                                    | `typescript`    | TypeScript        |
+
+`eslint-plugin-jsx-a11y-x` is a maintained fork of `eslint-plugin-jsx-a11y`, which has not supported ESLint since v9. Rule names are identical, and it is registered under the original `jsx-a11y` namespace, so `jsx-a11y/*` rule IDs and `eslint-disable` comments are unaffected.
 
 ## Differences from [`eslint-config-sanity`](https://github.com/sanity-io/eslint-config-sanity)
 

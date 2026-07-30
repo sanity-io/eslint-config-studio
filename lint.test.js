@@ -93,6 +93,139 @@ export function fn(): void {
   ])
 })
 
+it('reports the React rules that catch outright bugs', async () => {
+  const ruleIds = await lintRuleIds({
+    'bugs.jsx': `
+/* global document, window, setInterval, setTimeout, ResizeObserver, IntersectionObserver */
+import {createRef, lazy, useEffect, useMemo} from 'react'
+import ReactDOM, {findDOMNode, useFormState} from 'react-dom'
+
+export function Bad({items, value, action}) {
+  const ref = createRef()
+  const memo = useMemo(() => {})
+  const Lazy = lazy(() => import('./x.js'))
+  const [state] = useFormState(action, null)
+
+  function Nested() {
+    return <i />
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', () => value)
+    setInterval(() => value, 1000)
+    setTimeout(() => value, 1000)
+    new ResizeObserver(() => value).observe(document.body)
+    new IntersectionObserver(() => value).observe(document.body)
+  }, [value])
+
+  return (
+    <div ref={ref}>
+      <img alt="" src="/x.png">child</img>
+      <span children="a">b</span>
+      <svg:circle r="1" />
+      <p>
+        {value};
+      </p>
+      <Nested />
+      <Lazy />
+      {memo}
+      {state}
+      {items.map((item, i) => (
+        <li key={i}>{item}</li>
+      ))}
+    </div>
+  )
+}
+
+export function mount(node) {
+  ReactDOM.render(<Bad />, node)
+  ReactDOM.hydrate(<Bad />, node)
+  findDOMNode(node)
+}
+`,
+  })
+
+  expect(ruleIds).toEqual([
+    '@eslint-react/dom-no-find-dom-node',
+    '@eslint-react/dom-no-hydrate',
+    '@eslint-react/dom-no-render',
+    '@eslint-react/dom-no-use-form-state',
+    '@eslint-react/dom-no-void-elements-with-children',
+    '@eslint-react/jsx-no-children-prop-with-children',
+    '@eslint-react/jsx-no-leaked-semicolon',
+    '@eslint-react/jsx-no-namespace',
+    '@eslint-react/no-array-index-key',
+    '@eslint-react/no-create-ref',
+    '@eslint-react/no-nested-component-definitions',
+    '@eslint-react/no-nested-lazy-component-declarations',
+    '@eslint-react/use-memo',
+    '@eslint-react/web-api-no-leaked-event-listener',
+    '@eslint-react/web-api-no-leaked-intersection-observer',
+    '@eslint-react/web-api-no-leaked-interval',
+    '@eslint-react/web-api-no-leaked-resize-observer',
+    '@eslint-react/web-api-no-leaked-timeout',
+    // the empty `useMemo` callback and the incomplete dependency array are
+    // reported too, and are part of the same set of mistakes
+    'no-empty-function',
+    'react-hooks/exhaustive-deps',
+  ])
+})
+
+// The rules above are only worth enabling if they stay quiet on correct code.
+// `jsx-no-leaked-dollar` was left out of the config precisely because it does
+// not: it reports ordinary currency formatting like `Total: ${value} USD`.
+it('stays quiet on correct React code', async () => {
+  const ruleIds = await lintRuleIds({
+    'correct.jsx': `
+/* global document, window, setInterval, clearInterval, setTimeout, clearTimeout, ResizeObserver, IntersectionObserver */
+import {useEffect, useMemo, useRef} from 'react'
+
+export function Good({items, value}) {
+  const ref = useRef(null)
+  const memo = useMemo(() => value * 2, [value])
+
+  useEffect(() => {
+    const onResize = () => {
+      ref.current = window.innerWidth
+    }
+    window.addEventListener('resize', onResize)
+
+    const interval = setInterval(onResize, 1000)
+    const timeout = setTimeout(onResize, 1000)
+
+    const ro = new ResizeObserver(onResize)
+    ro.observe(document.body)
+
+    const io = new IntersectionObserver(onResize)
+    io.observe(document.body)
+
+    return () => {
+      window.removeEventListener('resize', onResize)
+      clearInterval(interval)
+      clearTimeout(timeout)
+      ro.disconnect()
+      io.disconnect()
+    }
+  }, [])
+
+  return (
+    <div ref={ref}>
+      <img alt="" src="/x.png" />
+      <p>Total: \${value} USD</p>
+      <p>one; two; three</p>
+      {memo}
+      {items.map((item) => (
+        <li key={item.id}>{item.label}</li>
+      ))}
+    </div>
+  )
+}
+`,
+  })
+
+  expect(ruleIds).toEqual([])
+})
+
 // ESLint 10 tracks JSX references natively, which is why this config no longer
 // enables `react/jsx-uses-vars`. If that tracking ever regresses, every
 // component referenced only from JSX would be reported as unused.

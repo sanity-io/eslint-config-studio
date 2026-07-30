@@ -60,7 +60,48 @@ Sanity Studio uses the automatic runtime, where no `React` import is needed. If
 you still need the classic runtime, remove the unused imports, or disable
 `no-unused-vars` for them.
 
-### New reports to expect
+### New React rules
+
+ESLint React covers bug classes `eslint-plugin-react` did not, so v7 enables a
+set of rules that have no v6 equivalent. All of them report genuine mistakes
+rather than style preferences.
+
+Errors, because the code is broken at runtime:
+
+| Rule                                                  | Catches                                                        |
+| ----------------------------------------------------- | -------------------------------------------------------------- |
+| `@eslint-react/dom-no-void-elements-with-children`    | children passed to `<img>`, `<br>` and other void elements     |
+| `@eslint-react/jsx-no-children-prop-with-children`    | a `children` prop and nested children on the same element      |
+| `@eslint-react/jsx-no-namespace`                      | namespaced JSX such as `<svg:circle />`, unsupported by React  |
+| `@eslint-react/use-memo`                              | a `useMemo` callback that returns nothing                      |
+| `@eslint-react/no-create-ref`                         | `createRef` in a function component, recreated on every render |
+| `@eslint-react/no-nested-component-definitions`       | components defined inside components, remounted every render   |
+| `@eslint-react/no-nested-lazy-component-declarations` | `lazy()` called inside a component or hook                     |
+| `@eslint-react/dom-no-find-dom-node`                  | `findDOMNode`, removed in React 19                             |
+| `@eslint-react/dom-no-hydrate`                        | `ReactDOM.hydrate`, removed in React 19                        |
+| `@eslint-react/dom-no-render`                         | `ReactDOM.render`, removed in React 19                         |
+| `@eslint-react/dom-no-use-form-state`                 | `useFormState`, replaced by `useActionState` in React 19       |
+
+Warnings, because the code is probably wrong:
+
+| Rule                                                    | Catches                                                   |
+| ------------------------------------------------------- | --------------------------------------------------------- |
+| `@eslint-react/no-array-index-key`                      | an array index used as a `key`                            |
+| `@eslint-react/jsx-no-leaked-semicolon`                 | a stray `;` that renders into the output                  |
+| `@eslint-react/web-api-no-leaked-event-listener`        | `addEventListener` with no matching `removeEventListener` |
+| `@eslint-react/web-api-no-leaked-interval`              | `setInterval` with no matching `clearInterval`            |
+| `@eslint-react/web-api-no-leaked-timeout`               | `setTimeout` with no matching `clearTimeout`              |
+| `@eslint-react/web-api-no-leaked-resize-observer`       | `ResizeObserver` never disconnected                       |
+| `@eslint-react/web-api-no-leaked-intersection-observer` | `IntersectionObserver` never disconnected                 |
+
+The `web-api-no-leaked-*` rules only look at components and hooks, and only
+report when there is no corresponding cleanup in the effect's cleanup function.
+
+ESLint React has many more rules than this config enables. See
+[its rules reference](https://eslint-react.xyz/docs/rules) if you want to opt
+into more.
+
+### Other new reports to expect
 
 - `no-shadow-restricted-names` now reports declarations that shadow `globalThis`, such as `const globalThis = 'foo'`. Rename the local identifier, or set `'no-shadow-restricted-names': ['error', {reportGlobalThis: false}]` in your own config to opt out
 - Three rules that ESLint 10 added to `eslint:recommended` are now enabled as warnings: [`no-unassigned-vars`](https://eslint.org/docs/latest/rules/no-unassigned-vars), [`no-useless-assignment`](https://eslint.org/docs/latest/rules/no-useless-assignment) and [`preserve-caught-error`](https://eslint.org/docs/latest/rules/preserve-caught-error)
@@ -70,7 +111,6 @@ you still need the classic runtime, remove the unused imports, or disable
 
 - ESLint 10 looks for `eslint.config.*` starting from each linted file's directory and searching upwards, instead of from the current working directory. If you relied on the old behaviour, pass `--config path/to/eslint.config.mjs` explicitly
 - See the [ESLint v10 migration guide](https://eslint.org/docs/latest/use/migrate-to-10.0.0) for the full list of upstream changes
-- ESLint React offers many more rules than this config enables. See [its rules reference](https://eslint-react.xyz/docs/rules) if you want to opt into more
 
 ## From v4 to v5
 

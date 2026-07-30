@@ -130,16 +130,53 @@ export default [
     plugins: {'@eslint-react': react},
     rules: {
       // a subset of @eslint-react's `recommended` preset, kept to the rules that
-      // catch bugs rather than enforce a way of writing React
+      // catch bugs rather than enforce a way of writing React. Rules requiring
+      // type-aware linting, and rules marked experimental upstream, are
+      // deliberately left out.
       // https://eslint-react.xyz/docs/rules
+
+      // Broken output or a runtime error
       '@eslint-react/dom-no-dangerously-set-innerhtml-with-children': 'warn',
+      '@eslint-react/dom-no-void-elements-with-children': 'error',
+      '@eslint-react/jsx-no-children-prop-with-children': 'error',
+      '@eslint-react/jsx-no-namespace': 'error',
+      '@eslint-react/use-memo': 'error',
+
+      // Components or refs recreated on every render, losing state
+      '@eslint-react/no-create-ref': 'error',
+      '@eslint-react/no-nested-component-definitions': 'error',
+      '@eslint-react/no-nested-lazy-component-declarations': 'error',
+
+      // Removed in React 19, so these throw at runtime
+      '@eslint-react/dom-no-find-dom-node': 'error',
+      '@eslint-react/dom-no-hydrate': 'error',
+      '@eslint-react/dom-no-render': 'error',
+      '@eslint-react/dom-no-use-form-state': 'error',
+
+      // Legacy APIs that misbehave rather than throw
       '@eslint-react/dom-no-render-return-value': 'error',
+      '@eslint-react/no-direct-mutation-state': 'error',
+
+      // Likely mistakes
       '@eslint-react/dom-no-string-style-prop': 'warn',
       '@eslint-react/dom-no-unknown-property': 'warn',
       '@eslint-react/dom-no-unsafe-target-blank': 'warn',
-      '@eslint-react/jsx-no-comment-textnodes': 'warn',
-      '@eslint-react/no-direct-mutation-state': 'error',
+      '@eslint-react/no-array-index-key': 'warn',
       '@eslint-react/no-missing-key': 'warn',
+
+      // Characters that leak into rendered output. Partly covers what the
+      // removed `react/no-unescaped-entities` used to catch.
+      // `jsx-no-leaked-dollar` is deliberately not enabled: it reports ordinary
+      // currency formatting such as `<p>Total: ${amount}</p>`
+      '@eslint-react/jsx-no-comment-textnodes': 'warn',
+      '@eslint-react/jsx-no-leaked-semicolon': 'warn',
+
+      // Subscriptions in components and hooks that are never cleaned up
+      '@eslint-react/web-api-no-leaked-event-listener': 'warn',
+      '@eslint-react/web-api-no-leaked-intersection-observer': 'warn',
+      '@eslint-react/web-api-no-leaked-interval': 'warn',
+      '@eslint-react/web-api-no-leaked-resize-observer': 'warn',
+      '@eslint-react/web-api-no-leaked-timeout': 'warn',
     },
   },
 

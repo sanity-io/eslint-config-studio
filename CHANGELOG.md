@@ -5,6 +5,20 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/sanity-io/eslint-config-studio/compare/v6.0.0...v7.0.0) (2026-08-17)
+
+### ⚠ BREAKING CHANGES
+
+- ESLint 10 and Node.js >= 22.13 are now required, and every
+  React rule has been renamed or removed. An `eslint-disable` comment naming a
+  `react/*` rule is now reported as an error and no longer suppresses anything.
+  See MIGRATION.md for the full rule mapping and upgrade steps.
+
+### Features
+
+- enable [@eslint-react](https://github.com/eslint-react) rules that catch outright bugs ([c6cc066](https://github.com/sanity-io/eslint-config-studio/commit/c6cc066ae4d43ad40388363bf2e6913a23d52314))
+- support eslint 10, via [@eslint-react](https://github.com/eslint-react) and eslint-plugin-jsx-a11y-x ([e9f4571](https://github.com/sanity-io/eslint-config-studio/commit/e9f4571941bacd04b184e027bb587a487d2152cd)), closes [jsx-eslint/eslint-plugin-react#3977](https://github.com/jsx-eslint/eslint-plugin-react/issues/3977) [jsx-eslint/eslint-plugin-jsx-a11y#1075](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/1075)
+
 ## [6.0.0](https://github.com/sanity-io/eslint-config-studio/compare/v5.0.2...v6.0.0) (2025-12-29)
 
 ### ⚠ BREAKING CHANGES

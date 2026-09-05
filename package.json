@@ -30,20 +30,20 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "@eslint-react/eslint-plugin": "^5.18.0",
+    "@eslint-react/eslint-plugin": "^5.18.7",
     "eslint-plugin-jsx-a11y-x": "^0.2.0",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "typescript-eslint": "^8.65.0"
+    "typescript-eslint": "^8.69.0"
   },
   "devDependencies": {
     "@sanity/semantic-release-preset": "^5.0.0",
-    "@types/react": "^19.0.10",
+    "@types/react": "^19.2.18",
     "confusing-browser-globals": "^1.0.11",
-    "eslint": "^10.8.0",
-    "prettier": "^3.7.4",
-    "prettier-plugin-packagejson": "^2.5.20",
-    "react": "^19.0.0",
-    "vitest": "^3.0.7"
+    "eslint": "^10.10.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-packagejson": "^2.5.22",
+    "react": "^19.2.8",
+    "vitest": "^3.2.7"
   },
   "peerDependencies": {
     "eslint": "^10.0.0"
